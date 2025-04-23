@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecturer Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans antialiased">
+    <div class="flex h-screen overflow-hidden">
+        <aside class="bg-blue-800 text-white w-64 flex flex-col">
+            <div class="p-6">
+                <h1 class="text-2xl font-semibold mb-4">Lecturer Panel</h1>
+                <nav class="flex-grow">
+                    <ul>
+                        <li class="mb-2">
+                            <a href="#resources" class="block p-3 hover:bg-blue-700 rounded">Resources</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="block p-3 hover:bg-blue-700 rounded" target="_blank">Forum</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#notes" class="block p-3 hover:bg-blue-700 rounded">Notes</a>
+                        </li>
+                        <li>
+                            <a href="#" id="logout-button" class="block px-4 py-2 hover:bg-indigo-600 rounded-md transition duration-300 mt-auto">Logout</a>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+            <div class="p-6 mt-auto">
+                <p class="text-sm text-blue-300">&copy; 2025 Digital library</p>
+            </div>
+        </aside>
+
+        <main class="flex-1 overflow-y-auto p-6">
+            <section id="resources" class="mb-8">
+                <h2 class="text-xl font-semibold mb-4">Resource Repository</h2>
+                <div class="bg-white shadow rounded p-4">
+                    <div class="mb-4">
+                        <label for="search" class="block text-gray-700 text-sm font-bold mb-2">Search Resources:</label>
+                        <input type="text" id="search" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter keywords...">
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">Search</button>
+                    </div>
+                    <div id="searchResults">
+                        <h3 class="text-lg font-semibold mt-4 mb-2">Search Results</h3>
+                        <p class="text-gray-600">No results found yet. Start searching!</p>
+                        </div>
+                </div>
+            </section>
+
+            <section id="notes">
+                <h2 class="text-xl font-semibold mb-4">Notes</h2>
+                <div class="bg-white shadow rounded p-4">
+                    <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-48" placeholder="Start taking your notes here..."></textarea>
+                    <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-2">Save Notes</button>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script>
+        // Function to display toast messages
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add('fade-out');
+                setTimeout(() => toast.remove(), 500); // Remove after fade out
+            }, 2000); // Display for 2 seconds
+        }
+
+         // Function to handle logout
+         function handleLogout() {
+            // In a real application, you would clear the user's session here
+            // and redirect them to the login page.  This is just a simulation.
+            console.log('User logged out');
+            showToast('Logged out successfully', 'success');
+            // Redirect to login page after the toast message
+            setTimeout(() => {
+                window.location.href = '/login'; // Replace '/login' with your actual login page URL
+            }, 2500);
+        }
+
+         // Event listener for the logout button
+         document.getElementById('logout-button').addEventListener('click', handleLogout);
+
+    </script>
+</body>
+</html>

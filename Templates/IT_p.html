@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Personnel Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans antialiased">
+    <div class="flex h-screen">
+        <aside class="bg-gray-800 text-white w-64 flex flex-col">
+            <div class="p-4">
+                <h1 class="text-2xl font-semibold">IT Dashboard</h1>
+            </div>
+            <nav class="mt-6">
+                <a href="/users" class="block py-2 px-4 hover:bg-gray-700">User Database</a>
+                <a href="/security" class="block py-2 px-4 hover:bg-gray-700">Security Measures</a>
+                <a href="#" class="block py-2 px-4 hover:bg-gray-700">System Logs</a>
+                <a href="#" class="block py-2 px-4 hover:bg-gray-700">Settings</a>
+                <a href="/password" class="block py-2 px-4 hover:bg-gray-700">Issue password</a>
+                <li>
+                    <a href="#" id="logout-button" class="block px-4 py-2 hover:bg-indigo-600 rounded-md transition duration-300 mt-auto">Logout</a>
+                </li>
+            </nav>
+            <div class="p-6 mt-auto">
+                <p class="text-sm text-blue-300">&copy; 2025 Digital library</p>
+            </div>
+        </aside>
+
+        <main class="flex-1 p-6">
+            <section id="users" class="mb-8">
+                <h2 class="text-xl font-semibold mb-4">User Database</h2>
+                <div class="bg-white shadow-md rounded-md overflow-hidden">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
+                                <th class="px-6 py-3 relative">
+                                    <span class="sr-only">Edit</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">1</td>
+                                <td class="px-6 py-4 whitespace-nowrap">John Kinuthia</td>
+                                <td class="px-6 py-4 whitespace-nowrap">john.ke@yahoo.com</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Lecturer</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <a href="/form" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">2</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Angela Atieno</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Angelake@yahoo.com</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Student</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">3</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Ahmed abdul</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Ahmedul@yahoo.com</td>
+                                <td class="px-6 py-4 whitespace-nowrap">lecturer</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">4</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Faith Kiprono</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Faithkip@yahoo.com</td>
+                                <td class="px-6 py-4 whitespace-nowrap">librarian</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="security" class="mb-8">
+                <h2 class="text-xl font-semibold mb-4">Security Measures</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-white shadow-md rounded-md p-4">
+                        <h3 class="font-semibold mb-2">Password Reset</h3>
+                        <label for="reset-user" class="block text-gray-700 text-sm font-bold mb-2">Select User:</label>
+                        <select id="reset-user" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            <option>John Kinuthia</option>
+                            <option>Angela Atieno</option>
+                            <option>Ahmed abdul</option>
+                            <option>Faith Kiprono</option>
+                            </select>
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4">Reset Password</button>
+                    </div>
+                    <div class="bg-white shadow-md rounded-md p-4">
+                        <h3 class="font-semibold mb-2">User Role Management</h3>
+                        <label for="role-user" class="block text-gray-700 text-sm font-bold mb-2">Select User:</label>
+                        <select id="role-user" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-2">
+                            <option>John Kinuthia</option>
+                            <option>Angela Atieno</option>
+                            <option>Faith Kiprono</option>
+                            <option>Ahmed abdul</option>
+                            </select>
+                        <label for="new-role" class="block text-gray-700 text-sm font-bold mb-2">New Role:</label>
+                        <select id="new-role" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4">
+                            <option>Librarian</option>
+                            <option>Student</option>
+                            <option>Lecture</option>
+                        </select>
+                        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Update Role</button>
+                    </div>
+                    <div class="bg-white shadow-md rounded-md p-4">
+                        <h3 class="font-semibold mb-2">Account Locking</h3>
+                        <label for="lock-user" class="block text-gray-700 text-sm font-bold mb-2">Select User:</label>
+                        <select id="lock-user" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4">
+                            <option>John Kinuthia</option>
+                            <option>Angela Atieno</option>
+                            <option>Faith Kiprono</option>
+                            <option>Ahmed abdul</option>
+                        </select>
+                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Lock Account</button>
+                    </div>
+                    <div class="bg-white shadow-md rounded-md p-4">
+                        <h3 class="font-semibold mb-2">Two-Factor Authentication</h3>
+                        <p class="text-gray-700 text-sm mb-2">Manage two-factor authentication settings for users.</p>
+                        <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Manage 2FA</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script>
+         // Function to display toast messages
+         function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add('fade-out');
+                setTimeout(() => toast.remove(), 500); // Remove after fade out
+            }, 2000); // Display for 2 seconds
+        }
+
+         // Function to handle logout
+         function handleLogout() {
+            // In a real application, you would clear the user's session here
+            // and redirect them to the login page.  This is just a simulation.
+            console.log('User logged out');
+            showToast('Logged out successfully', 'success');
+            // Redirect to login page after the toast message
+            setTimeout(() => {
+                window.location.href = '/login'; // Replace '/login' with your actual login page URL
+            }, 2500);
+        }
+
+         // Event listener for the logout button
+         document.getElementById('logout-button').addEventListener('click', handleLogout);
+
+    </script>
+</body>
+</html>

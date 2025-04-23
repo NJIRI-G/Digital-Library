@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@tailwindcss/browser@latest"></script>
+    <style>
+        /* Custom styles for toast messages */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 1rem;
+            z-index: 1000;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .toast-warning {
+            background-color: #f39c12;
+        }
+
+        .toast-info {
+            background-color: #3498db;
+        }
+
+        .toast-success {
+            background-color: #2ecc71;
+        }
+
+        .toast.fade-out {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-inter">
+    <div class="flex h-screen">
+        <aside class="bg-indigo-500 text-white w-64 p-4">
+            <div class="logo text-2xl font-semibold mb-8">Admin Panel</div>
+            <nav>
+                <ul class="space-y-4">
+                    <li>
+                        <a href="#users" class="block px-4 py-2 hover:bg-indigo-600 rounded-md transition duration-300">Users</a>
+                    </li>
+                    <li>
+                        <a href="#forum" class="block px-4 py-2 hover:bg-indigo-600 rounded-md transition duration-300">Forum</a>
+                    </li>
+                    <li>
+                        <a href="#resources" class="block px-4 py-2 hover:bg-indigo-600 rounded-md transition duration-300">Resources</a>
+                    </li>
+                    <li>
+                        <a href="#password" class="block px-4 py-2 hover:bg-indigo-600 rounded-md transition duration-300">Issue Password</a>
+                    </li>
+                    <li>
+                        <a href="#" id="logout-button" class="block px-4 py-2 hover:bg-indigo-600 rounded-md transition duration-300 mt-auto">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="p-6 mt-auto">
+                <p class="text-sm text-blue-300">&copy; 2025 Digital library</p>
+            </div>
+        </aside>
+
+        <main class="flex-1 p-8">
+            <h1 class="text-3xl font-semibold mb-6 text-gray-800">Dashboard</h1>
+
+            <section id="users" class="mb-8 bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4 text-gray-700">Users</h2>
+                <ul id="user-list" class="space-y-2">
+                    </ul>
+            </section>
+
+            <section id="forum" class="mb-8 bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4 text-gray-700">Forum</h2>
+                <p class="text-gray-600">Access the messaging forum here: <a href="#" class="text-blue-500 hover:underline">Forum Link</a></p>
+            </section>
+
+            <section id="resources" class="mb-8 bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4 text-gray-700">Resources</h2>
+                <ul id="resource-list" class="list-disc list-inside space-y-2">
+                    </ul>
+            </section>
+
+            <section id="password" class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4 text-gray-700">Issue Password</h2>
+                <input type="text" id="user-email" placeholder="Enter user email" class="w-full p-2 mb-4 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:border-blue-300" />
+                <button onclick="issuePassword()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline">Issue Password</button>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Sample user data (replace with actual data from your database)
+        const users = [
+            { id: 1, name: "John Kinuthia", email: "john.ke@yahoo.com" },
+            { id: 2, name: "Angela Atieno", email: "Angelake@yahoo.com" },
+            { id: 3, name: "Ahmed abdul", email: "Ahmedul@yahoo.com" },
+            { id: 3, name: "Faith Kiprono", email: "Faithkip@yahoo.com" },
+        ];
+
+        // Sample resource data
+        const resources = [
+            "Resource 1: Documentation",
+            "Resource 2: API Reference",
+            "Resource 3: Tutorial Videos",
+        ];
+
+        // Function to display user list
+        function displayUsers() {
+            const userList = document.getElementById("user-list");
+            userList.innerHTML = ""; // Clear previous content
+            users.forEach(user => {
+                const listItem = document.createElement("li");
+                listItem.className = "bg-gray-50 p-2 rounded-md";
+                listItem.textContent = `${user.name} (${user.email})`;
+                userList.appendChild(listItem);
+            });
+        }
+
+        // Function to display resources
+        function displayResources() {
+            const resourceList = document.getElementById("resource-list");
+            resourceList.innerHTML = ""; // Clear previous content
+            resources.forEach(resource => {
+                const listItem = document.createElement("li");
+                listItem.textContent = resource;
+                resourceList.appendChild(listItem);
+            });
+        }
+
+        // Function to simulate issuing a password
+        function issuePassword() {
+            const userEmailInput = document.getElementById("user-email");
+            const userEmail = userEmailInput.value;
+
+            if (userEmail) {
+                // In a real application, you would send this email to the server
+                // to generate and send a new password.  This is just a simulation.
+                console.log(`Issuing password for user: ${userEmail}`);
+                showToast(`Password has been issued to ${userEmail}`, 'success');
+                userEmailInput.value = ""; // Clear the input
+            } else {
+                showToast('Please enter a user email', 'warning');
+            }
+        }
+
+        // Function to display toast messages
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add('fade-out');
+                setTimeout(() => toast.remove(), 500); // Remove after fade out
+            }, 2000); // Display for 2 seconds
+        }
+
+         // Function to handle logout
+        function handleLogout() {
+            // In a real application, you would clear the user's session here
+            // and redirect them to the login page.  This is just a simulation.
+            console.log('User logged out');
+            showToast('Logged out successfully', 'success');
+            // Redirect to login page after the toast message
+            setTimeout(() => {
+                window.location.href = '/login'; // Replace '/login' with your actual login page URL
+            }, 2500);
+        }
+
+        // Initial display of data
+        displayUsers();
+        displayResources();
+
+        // Event listener for the logout button
+        document.getElementById('logout-button').addEventListener('click', handleLogout);
+
+    </script>
+</body>
+</html>

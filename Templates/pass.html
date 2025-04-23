@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Password</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body{
+            background-color: teal;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded shadow-md w-96">
+        <h2 class="text-2xl font-semibold mb-6 text-gray-800">Create New Password</h2>
+        <form>
+            <div class="mb-4">
+                <label for="newPassword" class="block text-gray-700 text-sm font-bold mb-2">New Password</label>
+                <input type="password" id="newPassword" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter new password">
+            </div>
+            <div class="mb-6">
+                <label for="confirmPassword" class="block text-gray-700 text-sm font-bold mb-2">Confirm New Password</label>
+                <input type="password" id="confirmPassword" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Confirm new password">
+            </div>
+            <div class="flex items-center justify-between">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                    Set New Password
+                </button>
+                <a href="/login" class="inline-block align-baseline font-semibold text-sm text-blue-500 hover:text-blue-800">
+                    Back to Login
+                </a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
