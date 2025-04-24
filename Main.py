@@ -47,8 +47,8 @@ users = {
 }
 
 @app.route('/')
-def index():
-    return redirect(url_for('login'))
+def Home():
+    return render_template('Home.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
