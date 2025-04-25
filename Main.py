@@ -8,7 +8,7 @@ from datetime import timedelta
 
 app = Flask(__name__)
 # socketio = SocketIO(app)
-
+app = Flask(__name__, template_folder='Templates')
 # Configure database connection
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///site.db')  # Use SQLite for simplicity, or PostgreSQL
 # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Suppress a warning
