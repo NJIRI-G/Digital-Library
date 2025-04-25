@@ -50,7 +50,7 @@ users = {
 def Home():
     return render_template('Home.html')
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
         username = request.form['username']
@@ -66,7 +66,7 @@ def login():
         return render_template('login.html', error='Invalid username or password')
     return render_template('login.html')
 
-@app.route("/register", methods=['GET', 'POST'])
+@app.route("/register", methods=['POST', 'GET'])
 def register():
     if session.get('user_id'):
         return redirect(url_for('dashboard'))  # Redirect if already logged in
@@ -131,7 +131,7 @@ def personnel_dashboard():
 
 
 
-@app.route("/password", methods=['GET', 'POST'])
+@app.route("/password", methods=['POSTT', 'GET'])
 def password():
     # if not session.get('username'):
     #     return redirect(url_for('login'))
