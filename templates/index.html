@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Chatbot</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    padding: 2em;
+    max-width: 600px;
+    margin: auto;
+    background: #f9f9f9;
+}
+
+input, button {
+    padding: 0.5em;
+    margin-top: 1em;
+    font-size: 1em;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+#chat-container {
+            width: 500px;
+            height: 400px;
+            border: 1px solid #ccc;
+            overflow-y: scroll;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+#user-input {
+            width: 400px;
+            padding: 8px;
+            border: 1px solid #ccc;
+  }
+#send-button {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+ }
+    </style>
+</head>
+<body>
+    <body>
+        <h1>📚 BookBot</h1>
+        <div id="chat-container">
+            <p>Welcome to the Library Chatbot!</p>
+        </div>
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <button id="send-button">Send</button>
+        <script>
+            $(document).ready(function() {
+                $("#send-button").click(function() {
+                    var message = $("#user-input").val();
+                    $("#chat-container").append("<p>You: " + message + "</p>");
+                    $("#user-input").val("");
+                    $.ajax({
+                        url: "/chat",
+                        type: "POST",
+                        contentType: "application/json",
+                        data: JSON.stringify({ "message": message }),
+                        success: function(data) {
+                            $("#chat-container").append("<p>Chatbot: " + data.response + "</p>");
+                            // Scroll to the bottom of the chat container
+                            $("#chat-container").scrollTop($("#chat-container")[0].scrollHeight);
+                        }
+                    });
+                });
+                // Handle Enter key press
+                $("#user-input").keypress(function(e) {
+                    if (e.which == 13) { // Enter key
+                        $("#send-button").click();
+                    }
+                });
+            });
+        </script>
+    </body>
+</body>
+</html>
